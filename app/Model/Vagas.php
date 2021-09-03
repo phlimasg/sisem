@@ -12,6 +12,6 @@ class vagas extends Model
         return $this->hasOne(AulaDatas::class);
     }
     public function turmas(){
-        return $this->belongsTo(turmas::class);
+        return $this->hasMany(turmas::class);
     }
 }

@@ -65,9 +65,9 @@ class AulasDatasController extends Controller
     {
         $datas = AulaDatas::find($id);
        
-        $turmas = turmas::join('vagas','vaga_id','vagas.id')
+        $turmas = turmas::join('vagas','vagas_id','vagas.id')
         ->where('vagas.aula_data_id',$id)
-        ->select('turmas.id','turma','quantidade','vaga_id')
+        ->select('turmas.id','turma','quantidade','vagas_id')
         ->get();
         //dd($vagas,$turmas);
         return view('aulas_datas.aulas_datas_show', compact('datas','turmas'));

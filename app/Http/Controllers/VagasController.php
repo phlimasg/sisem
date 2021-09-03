@@ -68,7 +68,8 @@ class VagasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $vagas = vagas::find($id);
+        return view('vagas.vagas_edit',compact('vagas'));
     }
 
     /**

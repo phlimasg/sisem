@@ -16,8 +16,8 @@ class CreateTurmasTable extends Migration
         Schema::create('turmas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('turma');
-            $table->unsignedBigInteger('vaga_id');            
-            $table->foreign('vaga_id')->references('id')->on('vagas')->onDelete('cascade');            
+            $table->unsignedBigInteger('vagas_id');            
+            $table->foreign('vagas_id')->references('id')->on('vagas')->onDelete('cascade');            
             $table->timestamps();
         });
     }

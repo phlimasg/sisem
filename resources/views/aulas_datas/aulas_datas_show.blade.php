@@ -41,7 +41,7 @@
 </div>
 <div class="box box-primary">
         <div class="box-header">
-                <a href="{{ route('vagas.create',['aula_data_id' => $datas->aula_id]) }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Adicionar Turma/Vaga</a>
+                <a href="{{ route('vagas.create',['aula_data_id' => $datas->id]) }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Adicionar Turma/Vaga</a>
             <h3 class="box-title">Turmas autorizadas e Vagas</h3>
         </div>
             <div class="box-body">
@@ -55,30 +55,29 @@
                                 <th>Turma</th>
                             </tr>
                             @php
-                            $vaga_id = 0;
+                            $vagas_id = 0;
                             $menu = 1;  
                             @endphp
                             @forelse ($turmas as $i)
-                            @if ($vaga_id != $i->vaga_id)
+                            @if ($vagas_id != $i->vagas_id)
                                 @php
-                                    $vaga_id = $i->vaga_id;
+                                    $vagas_id = $i->vagas_id;
                                 @endphp
                                 <tr>
                                     <td><div class="btn-group">
-                                            <a href="{{ route('vagas.show',['id'=>$i->vaga_id])}}"  class="btn btn-sm btn-primary"><span class="fa fa-eye"></span>  Ver</a>
+                                        <a href="{{ route('vagas.edit', ['id'=>$i->vagas_id]) }}" class="btn btn-sm btn-primary"><span class="fa fa-edit"></span> Editar</a>
                                             <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
                                                 <span class="caret"></span>
                                             </button>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li><a href="{{ route('vagas.edit', ['id'=>$i->vaga_id]) }}"><span class="fa fa-edit"></span> Editar</a></li>
-                                                <li><a data-toggle="modal" data-target="#modal{{$i->vaga_id}}"><span class="fa fa-remove"></span> Remover</a></li>
+                                            <ul class="dropdown-menu" role="menu">                                                
+                                                <li><a data-toggle="modal" data-target="#modal{{$i->vagas_id}}"><span class="fa fa-remove"></span> Remover</a></li>
                                             </ul>
                                         </div>
                                     </td>
-                                    <td>{{$i->vaga_id}}</td>
+                                    <td>{{$i->vagas_id}}</td>
                                     <td>{{$i->quantidade}}</td>                             
                                
-                                <div class="modal fade" id="modal{{$i->vaga_id}}" style="display: none;">
+                                <div class="modal fade" id="modal{{$i->vagas_id}}" style="display: none;">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                         <div class="modal-header">
